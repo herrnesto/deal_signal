@@ -5,11 +5,10 @@ use Mix.Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
+test_partition = System.get_env("MIX_TEST_PARTITION")
+
 config :deal_signal, DealSignal.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "deal_signal_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "localhost",
+  url: "postgres://postgres:postgress@0.0.0.0:5440/dealsignal_#{test_partition})",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,

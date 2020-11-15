@@ -46,7 +46,8 @@ defmodule DealSignal.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:floki, "~> 0.26.0"},
-      {:httpoison, "~> 1.6"}
+      {:httpoison, "~> 1.6"},
+      {:quantum, "~> 3.0"}
     ]
   end
 

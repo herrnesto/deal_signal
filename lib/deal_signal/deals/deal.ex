@@ -1,4 +1,4 @@
-defmodule DbAdapter.Deals.Deal do
+defmodule DealSignal.Deals.Deal do
   use Ecto.Schema
 
   import Ecto.Changeset
@@ -19,6 +19,12 @@ defmodule DbAdapter.Deals.Deal do
   def changeset(deal, params \\ %{}) do
     deal
     |> cast(params, @fields)
-    |> validate_required(@fields)
+    |> validate_required([:provider, :name, :image_url, :deal_end, :deal_id, :deal_url])
+  end
+
+  def error(deal) do
+    deal
+    |> change()
+    |> add_error(:hourly, "record exists", additional: "This product is already existing")
   end
 end

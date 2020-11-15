@@ -2,10 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :deal_signal, DealSignal.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "deal_signal_dev",
-  hostname: "localhost",
+  url: "postgres://postgres:postgress@0.0.0.0:5440/dealsignal_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

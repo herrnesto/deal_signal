@@ -1,6 +1,6 @@
-defmodule Engine.Deals do
-  alias DbAdapter.Deals.Deal
-  alias DbAdapter.Repo
+defmodule DealSignal.Deals do
+  alias DealSignal.Deals.Deal
+  alias DealSignal.Repo
 
   @doc """
   data = %{
@@ -14,8 +14,20 @@ defmodule Engine.Deals do
   }
   """
   def create(params) do
-    %Deal{}
-    |> Deal.changeset(params)
-    |> Repo.insert()
+    case exists?(params) do
+      nil ->
+        %Deal{}
+        |> Deal.changeset(params)
+        |> Repo.insert()
+
+      _ ->
+        %Deal{}
+        |> Deal.error()
+    end
+  end
+
+  def exists?(%{provider: provider, deal_id: deal_id}) do
+    Deal
+    |> Repo.get_by(%{provider: provider, deal_id: deal_id})
   end
 end

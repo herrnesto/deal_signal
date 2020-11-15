@@ -14,9 +14,9 @@ defmodule DealSignal.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: DealSignal.PubSub},
       # Start the Endpoint (http/https)
-      DealSignalWeb.Endpoint
+      DealSignalWeb.Endpoint,
       # Start a worker by calling: DealSignal.Worker.start_link(arg)
-      # {DealSignal.Worker, arg}
+      DealSignal.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
