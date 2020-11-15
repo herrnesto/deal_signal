@@ -28,7 +28,7 @@ config :phoenix, :json_library, Jason
 
 config :deal_signal, Acme.Scheduler,
   jobs: [
-    {"0 * * * *", fn -> DealSignal.scrape_product() end}
+    {"1 * * * *", fn -> DealSignal.scrape_product() end}
   ]
 
 # Import environment specific config. This must remain at the bottom
